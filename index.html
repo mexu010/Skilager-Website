@@ -180,7 +180,25 @@
 .footer-logo img:hover {
     opacity: 1;
 }
- 
+
+        #videoPlayer iframe {
+    width: 90%;        
+    height: 90%;
+    border-radius: 20px; 
+    transform: scale(1.05); 
+}
+
+ #videoPlayer {
+    width: 100%;
+    height: 100%;
+}
+
+#videoPlayer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+        
     </style>
 </head>
 <body>
@@ -470,20 +488,31 @@
 
 <!-- Promovideo -->
 <section id="promovideo" class="section section-mid">
-    <div class="container">
-        <span class="section-label">Einblicke</span>
-        <h2 class="section-title">Promovideo</h2>
+  <div class="container-promovideo">
+    <span class="section-label">Einblicke</span>
+    <h2 class="section-title">Promovideo</h2>
 
-        <div class="video-box" id="videoBox" onclick="playVideo()">
-            <div class="play-btn" id="playBtn">
-                <svg fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <p class="video-text" id="videoText">Klicken zum Abspielen</p>
-            <video class="video-player" id="videoPlayer" controls>
-                <source src="Videos/Skilager-Promovideo.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
+    <div class="video-box" id="videoBox" onclick="playVideo()">
+      
+      <div class="play-btn" id="playBtn">
+        <svg fill="white" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+
+      <p class="video-text" id="videoText">Klicken zum Abspielen</p>
+
+      <!-- VIDEO -->
+<div id="videoPlayer" style="display:none;">
+  <iframe 
+    id="ytVideo"
+    width="100%" 
+    height="100%"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+</div>
 </section>
 
 
@@ -511,9 +540,13 @@
 function playVideo() {
     document.getElementById('playBtn').style.display = 'none';
     document.getElementById('videoText').style.display = 'none';
-    var video = document.getElementById('videoPlayer');
-    video.style.display = 'block';
-    video.play();
+
+    const player = document.getElementById('videoPlayer');
+    const iframe = document.getElementById('ytVideo');
+
+    player.style.display = 'flex';
+
+    iframe.src = "https://www.youtube.com/embed/y3l7RPlxS74?autoplay=1&mute=1";
 }
 </script>
 
