@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - Skilager 2026</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --dark-1: #030712;
+            --dark-2: #0A1628;
+            --dark-3: #0F2341;
+            --accent: #4DA8DA;
+            --white: #ffffff;
+            --red: #ef4444;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-1);
+            color: var(--white);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        h1, h2, h3 { font-family: 'Inter', sans-serif; }
+        a { color: inherit; text-decoration: none; }
+        
+        .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        
+        .header {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            transition: opacity 0.3s;
+        }
+        .back-link:hover { opacity: 0.7; }
+        
+        .content { padding: 80px 0; }
+        .title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+        
+        .card {
+            background: var(--dark-3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .card-title {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .card-text { color: rgba(255,255,255,0.6); }
+        
+        .footer {
+            padding: 24px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 14px;
+        }
+        .red { color: var(--red); }
+
+
+.title-row {
+    display: flex;
+    flex-direction: column;   /* WICHTIG: untereinander */
+    align-items: flex-start;  /* links ausgerichtet */
+    gap: px;                /* Abstand zwischen Titel und Logo */
+    margin-bottom: 48px;
+}
+
+/* rechter Bereich */
+.title-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Titel FIX */
+.title {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0; /* wichtig! */
+}
+
+/* Logo */
+.logo-link img {
+    height: 38px;
+    display: block;
+}
+
+/* Back-Link */
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+
+    </style>
+</head>
+<body>
+
+  
+   
+    
+    <main class="content">
+    <div class="container">
+
+        <div class="title-row">
+            <h1 class="title">Impressum</h1>
+
+            <div class="title-right">
+                <a href="index.html" class="logo-link">
+                    <img src="Images/Schule Root.png" alt="Schule Root Logo">
+                </a>
+
+                <a href="index.html" class="back-link">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                   <strong>Zurück zur Startseite</strong>
+                </a>
+            </div>
+        </div>
+            <div class="card">
+                <h3 class="card-title">Betreiber</h3>
+                <p class="card-text">
+                    Schule Root<br>
+                    Schulstrasse 14, 6037 Root<br>
+                    Schweiz
+                </p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Kontakt Lagerleitung</h3>
+                <p class="card-text">
+                    D. C. Robmann<br>
+                    Schulstrasse 14, 6037 Root<br>
+                    dimitri.robmann@schule-root.ch
+                </p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Verantwortlich für Inhalt</h3>
+                <p class="card-text">Schneesportlager Schule Root</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Haftung</h3>
+                <p class="card-text">Die Inhalte dieser Website wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Urheberrecht</h3>
+                <p class="card-text">Alle Inhalte und Werke auf dieser Seite unterliegen dem Schweizer Urheberrecht. Ohne schriftliche Zustimmung darf nichts kopiert oder weiterverwendet werden.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Datenschutz</h3>
+                <p class="card-text">Diese Website kann ohne persönliche Daten genutzt werden. Falls Daten erhoben werden, passiert das freiwillig und wird nicht an andere weitergegeben.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            © 2026 Schule <span class="red">Root</span>
+        </div>
+    </footer>
+</body>
+</html>

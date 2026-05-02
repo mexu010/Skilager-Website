@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skilager 2026 - Schule Root</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: #030712; color: #fff; line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; font-weight: 800; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* Navigation */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(3,7,18,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; }
+        .nav-logo .red { color: #ef4444; }
+        .nav-links { display: flex; gap: 8px; }
+        .nav-link { padding: 8px 16px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.5); border-radius: 8px; transition: all 0.3s; }
+        .nav-link:hover { color: #fff; background: rgba(255,255,255,0.05); }
+
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(to bottom, #0A1628, #0F2341, #030712); position: relative; }
+        .hero-content { max-width: 1200px; margin: 0 auto; padding: 120px 24px 48px; }
+        .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 50px; margin-bottom: 32px; }
+        .badge-dot { width: 8px; height: 8px; background: #4DA8DA; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.9); } }
+        .badge-text { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7); }
+        .hero h1 { font-size: clamp(48px, 10vw, 96px); font-weight: 800; line-height: 0.9; margin-bottom: 8px; }
+        .hero-year { font-size: clamp(64px, 15vw, 160px); font-weight: 800; color: #1e3a5f; display: block; margin-bottom: 24px; }
+        .hero-subtitle { font-size: clamp(18px, 2vw, 24px); color: rgba(255,255,255,0.6); font-weight: 600; max-width: 600px; margin-bottom: 48px; }
+        
+        .cta-btn { display: inline-flex; align-items: center; background: linear-gradient(135deg, #3B82C4, #5BA8D8); border-radius: 50px; box-shadow: 0 20px 40px rgba(77,168,218,0.3); transition: all 0.3s ease; margin-bottom: 96px; cursor: pointer; }
+        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 25px 50px rgba(77,168,218,0.5); }
+        .cta-icon { width: 70px; height: 70px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 8px; transition: all 0.3s; }
+        .cta-btn:hover .cta-icon { background: rgba(255,255,255,0.3); }
+        .cta-icon svg { width: 28px; height: 28px; }
+        .cta-text { font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; padding: 0 48px 0 16px; }
+
+        /* Stats */
+        .stats { background: #020408; padding: 48px 24px; border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .stats-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+        .stat-value { font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 5vw, 56px); font-weight: 700; }
+        .stat-unit { color: rgba(77,168,218,0.3); }
+        .stat-label { font-size: 12px; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+
+        /* Features */
+        .features { background: #0A1628; padding: 96px 24px; }
+        .features-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card { background: #0F2341; border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 32px; transition: all 0.3s ease; }
+        .feature-card:hover { border-color: rgba(77,168,218,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); transform: translateY(-5px); }
+        .feature-icon { width: 56px; height: 56px; background: rgba(77,168,218,0.1); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+        .feature-icon svg { width: 28px; height: 28px; color: #4DA8DA; }
+        .feature-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .feature-desc { color: rgba(255,255,255,0.5); font-size: 15px; }
+
+        /* Section */
+        .section { padding: 96px 24px; }
+        .section-dark { background: #030712; }
+        .section-mid { background: #0A1628; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .section-label { font-size: 12px; font-weight: 700; color: #4DA8DA; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 16px; }
+        .section-title { font-size: clamp(36px, 6vw, 56px); font-weight: 800; margin-bottom: 48px; }
+
+        /* Cards */
+        .card { background: #0F2341; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 32px; margin-bottom: 24px; }
+        .card-title { font-size: 20px; font-weight: 700; color: #4DA8DA; margin-bottom: 12px; }
+        .card-text { color: rgba(255,255,255,0.7); font-size: 16px; }
+
+        /* Buttons */
+        .btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 32px; background: #4DA8DA; color: #fff; border-radius: 50px; font-weight: 700; font-size: 15px; transition: all 0.3s ease; cursor: pointer; }
+        .btn:hover { background: #5DB8EA; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(77,168,218,0.4); }
+        .btn svg { width: 18px; height: 18px; }
+
+        /* Grid */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
+
+        /* Payment */
+        .payment-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .payment-label { color: rgba(255,255,255,0.5); font-size: 15px; }
+        .payment-value { font-family: 'Space Grotesk', monospace; font-weight: 600; font-size: 15px; }
+        .payment-value.blue { color: #4DA8DA; font-size: 18px; }
+
+        /* Warning */
+        .warning { background: rgba(77,168,218,0.08); border: 1px solid rgba(77,168,218,0.2); border-radius: 16px; padding: 24px; margin-top: 24px; }
+        .warning-title { font-size: 18px; font-weight: 800; color: #ef4444; margin-bottom: 16px; }
+        .warning-list { list-style: none; }
+        .warning-list li { display: flex; align-items: flex-start; gap: 12px; color: rgba(255,255,255,0.8); margin-bottom: 12px; font-size: 15px; }
+        .warning-list li::before { content: "•"; color: #ef4444; font-weight: bold; font-size: 18px; }
+        .warning-date { color: #ef4444; font-weight: 700; }
+
+        /* Rules */
+        .rules-intro { color: rgba(255,255,255,0.7); font-size: 18px; font-weight: 600; margin-bottom: 32px; line-height: 1.7; }
+        .rules-card { background: #0F2341; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 16px; margin-bottom: 24px; }
+        .rule { display: flex; align-items: flex-start; gap: 16px; padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .rule:last-child { border-bottom: none; }
+        .rule-icon { width: 28px; height: 28px; min-width: 28px; background: rgba(77,168,218,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+        .rule-icon svg { width: 14px; height: 14px; color: #4DA8DA; }
+        .rule-text { color: rgba(255,255,255,0.8); font-size: 15px; line-height: 1.6; }
+
+        /* Consequences */
+        .consequences { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+
+        /* FIS */
+        .fis-card { background: #0F2341; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 24px; }
+        .fis-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+        .fis-desc { color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+        .fis-image { background: #fff; border-radius: 12px; overflow: hidden; }
+        .fis-link { display: inline-flex; align-items: center; gap: 8px; color: #4DA8DA; font-weight: 600; margin-top: 20px; transition: color 0.3s; }
+        .fis-link:hover { color: #7EC8E3; }
+        .fis-link svg { width: 18px; height: 18px; }
+
+        /* Links */
+        .links-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .link-card { background: #0F2341; border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 24px; transition: all 0.3s ease; }
+        .link-card:hover { border-color: rgba(77,168,218,0.3); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+        .link-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .link-icon { width: 44px; height: 44px; background: rgba(77,168,218,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .link-icon svg { width: 22px; height: 22px; color: #4DA8DA; }
+        .link-title { font-size: 18px; font-weight: 700; }
+        .link-list { display: flex; flex-direction: column; gap: 8px; }
+        .link-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500; transition: all 0.3s; padding: 6px 0; }
+        .link-item:hover { color: #4DA8DA; }
+        .link-item svg { width: 16px; height: 16px; }
+        .red { color: #ef4444; }
+
+        /* Video */
+        .video-box { background: #0F2341; border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; overflow: hidden; }
+        .video-box:hover { border-color: rgba(77,168,218,0.3); }
+        .play-btn { width: 96px; height: 96px; background: #4DA8DA; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(77,168,218,0.4); transition: all 0.3s ease; }
+        .video-box:hover .play-btn { transform: scale(1.1); box-shadow: 0 25px 50px rgba(77,168,218,0.5); }
+        .play-btn svg { width: 40px; height: 40px; margin-left: 4px; }
+        .video-text { color: rgba(255,255,255,0.5); font-size: 14px; margin-top: 20px; }
+        .video-player { width: 100%; height: 100%; display: none; }
+
+        /* Footer */
+        footer { background: #020408; padding: 80px 24px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .footer-title { font-size: clamp(36px, 6vw, 56px); font-weight: 800; margin-bottom: 8px; }
+        .footer-subtitle { color: rgba(255,255,255,0.5); font-size: 20px; font-weight: 700; margin-bottom: 32px; }
+        .footer-links { display: flex; justify-content: center; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; }
+        .footer-link { padding: 12px 20px; color: rgba(255,255,255,0.4); font-size: 14px; font-weight: 500; border-radius: 8px; transition: all 0.3s; }
+        .footer-link:hover { color: #fff; background: rgba(255,255,255,0.05); }
+        .footer-bottom { padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.3); font-size: 14px; }
+        .footer-bottom a { color: rgba(255,255,255,0.4); margin-left: 16px; transition: color 0.3s; }
+        .footer-bottom a:hover { color: #fff; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid, .links-grid, .grid-2 { grid-template-columns: 1fr; }
+        }
+
+.nav-logo img {
+    height: 28px;  
+    width: auto;
+    display: block;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.footer-logo img {
+    height: 30px;  
+    width: auto;
+}
+
+.footer-logo img {
+    height: 30px;
+    opacity: 0.9;
+}
+
+.footer-logo img:hover {
+    opacity: 1;
+}
+ 
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-inner">
+        <div class="nav-logo">
+    <img src="Images/Schule Root.png" alt="Schule Root Logo">
+</div>
+        <div class="nav-links">
+            <a href="#anmeldung" class="nav-link">Anmeldung</a>
+            <a href="#regeln" class="nav-link">Regeln</a>
+            <a href="#links" class="nav-link">Links</a>
+            <a href="#promovideo" class="nav-link">Promovideo</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text">Anmeldung offen</span>
+        </div>
+        <h1>SKILAGER<span class="hero-year">2026</span></h1>
+        <p class="hero-subtitle">Arosa Lenzerheide. Eine Woche voller Abenteuer in den Schweizer Alpen.</p>
+        <a href="#anmeldung" class="cta-btn">
+            <span class="cta-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </span>
+            <span class="cta-text">Jetzt anmelden</span>
+        </a>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+    <div class="stats-grid">
+        <div><div class="stat-value">225<span class="stat-unit">KM</span></div><div class="stat-label">Pisten</div></div>
+        <div><div class="stat-value">1800<span class="stat-unit">M</span></div><div class="stat-label">Höhe</div></div>
+        <div><div class="stat-value">7</div><div class="stat-label">Tage</div></div>
+        <div><div class="stat-value">Feb</div><div class="stat-label">2026</div></div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg></div>
+            <h3 class="feature-title">Skigebiet</h3>
+            <p class="feature-desc">225km Pisten in einem der grössten Skigebiete der Schweiz.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg></div>
+            <h3 class="feature-title">Gemeinschaft</h3>
+            <p class="feature-desc">Unvergessliche Erlebnisse mit deinen Klassenkameraden.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
+            <h3 class="feature-title">Unterkunft</h3>
+            <p class="feature-desc">Gemütliches Ferienhaus Raschainas in Lenzerheide.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Anmeldung -->
+<section id="anmeldung" class="section section-dark">
+    <div class="container">
+        <span class="section-label">Schritt für Schritt</span>
+        <h2 class="section-title">Anmeldung</h2>
+
+        <div class="card">
+            <h4 class="card-title">Hinweis zur Anmeldung</h4>
+            <p class="card-text">Online-Anmeldung ist nicht mehr möglich. Plätze sind noch verfügbar - bei Interesse bitte direkt Herr Robmann kontaktieren. Die Teilnahme wird schriftlich bestätigt.</p>
+        </div>
+
+        <div class="grid-2">
+            <a href="downloads/Ausschreibung Schneesportlager 2026.pdf" download class="btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Ausschreibung
+            </a>
+            <a href="downloads/Detailinfos-2026.pdf" download class="btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Detailinfos
+            
+               <a href="https://docs.google.com/forms/d/1ZAEeLfY_ITo3URg9kvzgd1n8NirHMsY-7fOq-M9ZS-w/edit?ts=673459d6&pli=1#question=1273815644&field=1000000" target="_blank" style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                width: 205%;
+                margin-top: 15px;
+                padding: 18px 30px;
+                background: linear-gradient(135deg, #4DA8DA, #3B9BC9);
+                color: white;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: 600;
+                font-size: 16px;
+                box-shadow: 0 10px 40px rgba(77, 168, 218, 0.3);
+                transition: all 0.3s ease;>
+
+" onmouseover="this.style.transform='translateY(-2px) scale(1.02)'; this.style.boxShadow='0 15px 50px rgba(77, 168, 218, 0.4)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 10px 40px rgba(77, 168, 218, 0.3)';">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Google Formular
+</a>
+        </div>
+
+   
+
+        <div class="card">
+            <h3 style="font-size: 28px; font-weight: 800; margin-bottom: 24px;">Zahlung</h3>
+            <div class="payment-row"><span class="payment-label">Preis</span><span class="payment-value blue">CHF 350.-</span></div>
+            <div class="payment-row"><span class="payment-label">IBAN</span><span class="payment-value">CH93 0900 0000 6068 6828 3</span></div>
+            <div class="payment-row"><span class="payment-label">Konto</span><span class="payment-value">60-686828-3</span></div>
+            <div class="payment-row" style="flex-direction: column; align-items: flex-start; gap: 8px; border: none;">
+                <span class="payment-label">Zugunsten von</span>
+                <span style="font-weight: 500;">Schneesportlager, D. C. Robmann, Weinberglistrasse 58, 6005 Luzern</span>
+            </div>
+            <a href="downloads/Bankverbindung.pdf" download class="btn" style="width: 100%; margin-top: 24px;">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Bankverbindung als PDF
+            </a>
+            <div class="warning">
+                <h4 class="warning-title">Wichtig</h4>
+                <ul class="warning-list">
+                    <li>Anmeldung erst definitiv nach Zahlung</li>
+                    <li>Einzahlung bis <span class="warning-date">12.01.2026</span></li>
+                    <li>Vor- und Nachname des Kindes beim Zahlungsgrund angeben</li>
+                    <li>E-Banking oder Zahlungsauftrag nutzen (keine Einzahlungsscheine)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Regeln -->
+<section id="regeln" class="section section-mid">
+    <div class="container">
+        <span class="section-label">Lagerregeln</span>
+        <h2 class="section-title">Regeln</h2>
+
+        <p class="rules-intro">Ich bin bereit im Lager aktiv dabei zu sein. Das heisst die Lagerregeln einzuhalten und mich am Lagerprogramm zu beteiligen.</p>
+
+        <div class="rules-card">
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Ich halte die Zeiten ein, ich erscheine stets pünktlich!</span>
+            </div>
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Ich erledige die Ämtli und Aufträge zuverlässig und sorgsam.</span>
+            </div>
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Ich halte mich an die Hausordnung!</span>
+            </div>
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Ich halte Ordnung und achte auf Sauberkeit. Bei Bedarf räume ich auf!</span>
+            </div>
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Ich trage Sorge zum eigenen und fremden Inventar!</span>
+            </div>
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Ich zeige Freude und Spass am Ski- und/oder Snowboard fahren und am Aufenthalt im Freien bei schönem, wie auch bei weniger schönem Wetter!</span>
+            </div>
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Ich trage auf der Piste immer meinen Helm und halte mich an die FIS-Regeln!</span>
+            </div>
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Ich unterstütze die anderen Lagerteilnehmer und gehe freundlich mit allen um.</span>
+            </div>
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Ich halte die Schulregeln 24 Stunden ein, es gilt absolutes Rauch-, Vape-, e-Zigaretten und Alkoholverbot! Auch Energy-Drinks sind nicht erlaubt.</span>
+            </div>
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Ich halte die Nachtruhe ein und sorge für genügend Erholung in der freien Zeit!</span>
+            </div>
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Vor dem Zubettgehen gebe ich ALLE meine Handys und Kommunikationsgeräte ab!</span>
+            </div>
+            <div class="rule">
+                <span class="rule-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="rule-text">Wer aus gesundheitlichen Gründen (Krankheit/Verletzung) nicht mehr am Sportprogramm teilnehmen kann, reist nach Hause.</span>
+            </div>
+        </div>
+
+        <div class="consequences">
+            <h4 class="warning-title">Konsequenzen bei Regelverstoss</h4>
+            <ul class="warning-list">
+                <li>Fehlbare Lernende werden unverzüglich auf eigene Kosten nach Hause geschickt! Sie müssen von den Eltern in Empfang genommen oder abgeholt werden.</li>
+                <li>Alle Verstösse, die im Lager geschehen, sind zeugnisrelevant und werden in den Schulakten vermerkt.</li>
+            </ul>
+        </div>
+
+        <div class="fis-card">
+            <h4 class="fis-title">FIS Regeln</h4>
+           
+            <div class="fis-image">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-8ZtWy0248YpAk0BfAU93De2aZaOCVQ.png" alt="FIS Regeln - 10 Verhaltensregeln fuer Skifahrer und Snowboarder">
+            </div>
+            <a href="https://www.fis-ski.com" target="_blank" class="fis-link">
+                Mehr auf fis-ski.com
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Links -->
+<section id="links" class="section section-dark">
+    <div class="container">
+        <span class="section-label">Ressourcen</span>
+        <h2 class="section-title">Links</h2>
+
+        <div class="links-grid">
+            <div class="link-card">
+                <div class="link-header">
+                    <div class="link-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg></div>
+                    <h4 class="link-title">Skigebiet</h4>
+                </div>
+                <div class="link-list">
+                    <a href="https://arosalenzerheide.swiss" target="_blank" class="link-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        Arosa Lenzerheide
+                    </a>
+                    <a href="https://winter.intermaps.com/arosa_lenzerheide" target="_blank" class="link-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        Pistenplan
+                    </a>
+                </div>
+            </div>
+            <div class="link-card">
+                <div class="link-header">
+                    <div class="link-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></div>
+                    <h4 class="link-title">Webcams</h4>
+                </div>
+                <div class="link-list">
+                    <a href="https://arosalenzerheide.swiss/de/Lenzerheide/Aktuell/Webcams" target="_blank" class="link-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        Webcams Lenzerheide
+                    </a>
+                    <a href="https://arosalenzerheide.swiss/de/Arosa/Aktuell/Webcams" target="_blank" class="link-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        Webcams Arosa
+                    </a>
+                </div>
+            </div>
+            <div class="link-card">
+                <div class="link-header">
+                    <div class="link-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
+                    <h4 class="link-title">Unterkunft</h4>
+                </div>
+                <div class="link-list">
+                    <a href="https://www.raschainas.ch/gruppenferienhaus" target="_blank" class="link-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        Ferienhaus Raschainas
+                    </a>
+                </div>
+            </div>
+            <div class="link-card">
+                <div class="link-header">
+                    <div class="link-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg></div>
+                    <h4 class="link-title">Schule</h4>
+                </div>
+                <div class="link-list">
+                    <a href="https://www.schule-root.ch/" target="_blank" class="link-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        Schule <span class="red">Root</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Promovideo -->
+<section id="promovideo" class="section section-mid">
+    <div class="container">
+        <span class="section-label">Einblicke</span>
+        <h2 class="section-title">Promovideo</h2>
+
+        <div class="video-box" id="videoBox" onclick="playVideo()">
+            <div class="play-btn" id="playBtn">
+                <svg fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <p class="video-text" id="videoText">Klicken zum Abspielen</p>
+            <video class="video-player" id="videoPlayer" controls>
+                <source src="Videos/Skilager-Promovideo.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer>
+    <h3 class="footer-title">Schneesportlager 2026</h3>
+    <div class="footer-logo">
+    <img src="Images/Schule Root.png" alt="Schule Root ">
+</div>
+<p class="footer-subtitle">Arosa Lenzerheide</p>
+
+    <div class="footer-links">
+        <a href="#anmeldung" class="footer-link">Anmeldung</a>
+        <a href="#regeln" class="footer-link">Regeln</a>
+        <a href="#links" class="footer-link">Links</a>
+        <a href="#promovideo" class="footer-link">Promovideo</a>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Schule <span class="red">Root</span>
+        <a href="impressum.html">Impressum</a>
+    </div>
+</footer>
+
+<script>
+function playVideo() {
+    document.getElementById('playBtn').style.display = 'none';
+    document.getElementById('videoText').style.display = 'none';
+    var video = document.getElementById('videoPlayer');
+    video.style.display = 'block';
+    video.play();
+}
+</script>
+
+</body>
+</html>
